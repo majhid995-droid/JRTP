@@ -1,5 +1,7 @@
 package com.dee.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.dee.entity.Citizen;
 import com.dee.request.SearchRequest;
 import com.dee.service.ReportServiceImpl;
 
@@ -18,7 +21,8 @@ public class ReportController {
 	@PostMapping("/searchInfo")
 	public String searchResult(@ModelAttribute("search") SearchRequest request,Model model) 
 	{
-		System.out.println(request);
+		List<Citizen> citizenList=service.search(request);
+		model.addAttribute("cList", citizenList);
 		init(model);
 		return "index";
 	}

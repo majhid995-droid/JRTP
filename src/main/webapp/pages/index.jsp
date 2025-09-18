@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +68,36 @@
 
         <hr class="my-4">
 
-        <!-- Results placeholder -->
+        	<table class="table table-hover table-striped-columns">
+        		<tr class="text-center">
+        			<th>S.No</th>
+        			<th>Name</th>
+        			<th>Gender</th>
+        			<th>Plan</th>
+        			<th>Status</th>
+        			<th>Start Date</th>
+        			<th>End Date</th>
+        			<th>Benefit Amount</th>
+        			<th>Denial Reason</th>
+        			<th>Termination Date</th>
+        			<th>Termination Reason</th>
+        		</tr>
+        		<c:forEach items="${cList}" var="plan" varStatus="index">
+        			<tr class="text-center">
+        				<td>${index.count}</td>
+        				<td>${plan.citizen_Name}</td>
+        				<td>${plan.gender}</td>
+        				<td>${plan.plan_Name}</td>
+        				<td>${plan.plan_Status}</td>
+        				<td>${plan.plane_Start_Date}</td>
+        				<td>${plan.plan_End_Date}</td>
+        				<td>${plan.benefit_Amount}</td>
+        				<td>${plan.denial_Resason}</td>
+        				<td>${plan.termination_Date}</td>
+        				<td>${plan.termination_Reason}</td>
+        			</tr>
+        		</c:forEach>
+        	</table>
         
 
         <hr class="my-4">

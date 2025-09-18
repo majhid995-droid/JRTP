@@ -29,8 +29,9 @@ public class ReportServiceImpl implements IReportService
 
 	@Override
 	public List<Citizen> search(SearchRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Citizen> citizens=repo.findAll();
+		
+		return citizens;
 	}
 
 	@Override
