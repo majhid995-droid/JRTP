@@ -17,14 +17,14 @@ public class ReportServiceImpl implements IReportService
 
 	@Override
 	public List<String> getAllPlanNames() {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> planName=repo.getPlansName();
+		return planName;
 	}
 
 	@Override
 	public List<String> getAllPlanStatus() {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> status=repo.getPlanStatus();
+		return status;
 	}
 
 	@Override
