@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import com.dee.entity.Citizen;
 import com.dee.repository.ICitizenRepository;
 
-@Component
+//@Component
 public class CitizenRunner implements CommandLineRunner {
 
 	@Autowired
