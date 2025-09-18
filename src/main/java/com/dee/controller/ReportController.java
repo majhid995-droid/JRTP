@@ -37,4 +37,5 @@ public class ReportController {
 		model.addAttribute("status", service.getAllPlanStatus());
 	}
 	
+	
 }

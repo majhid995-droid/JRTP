@@ -3,6 +3,7 @@ package com.dee.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.dee.entity.Citizen;
@@ -28,8 +29,28 @@ public class ReportServiceImpl implements IReportService
 	}
 
 	@Override
-	public List<Citizen> search(SearchRequest request) {
-		List<Citizen> citizens=repo.findAll();
+	public List<Citizen> search(SearchRequest request) 
+	{
+		Citizen czen=new Citizen();
+		if(null!=request.getPlanName() && !"".equals(request.getPlanName())) {
+			czen.setPlan_Name(request.getPlanName());
+		}
+		if(null!=request.getPlanStatus() && !"".equals(request.getPlanStatus())) {
+			czen.setPlan_Status(request.getPlanStatus());
+		}
+		if(null!=request.getGender() && !"".equals(request.getGender())) {
+			czen.setGender(request.getGender());
+		}
+		if(null!=request.getStartDate()) {
+			czen.setPlane_Start_Date(request.getStartDate());
+		}
+		if(null!=request.getEndDate()) 
+		{
+			czen.setPlan_End_Date(request.getEndDate());
+		}
+		
+		
+		List<Citizen> citizens=repo.findAll(Example.of(czen));		
 		
 		return citizens;
 	}

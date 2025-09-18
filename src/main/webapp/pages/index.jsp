@@ -7,10 +7,18 @@
     <meta charset="UTF-8">
     <title>Citizen Search</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
+		table thead th {
+					  position: sticky;
+					  top: 0;
+					  z-index: 2;     /* keeps header above rows */
+					  background: #f8f9fa; /* or use Bootstrap's table-light */
+					}
+	</style>
 </head>
 <body class="bg-light">
 
-<div class="container mt-5">
+<div class="container">
     <div class="card shadow p-4">
         <h4 class="text-center mb-4 text-primary">Report Generation</h4>
 
@@ -59,17 +67,17 @@
 
                 <!-- Search Button -->
                 <div class="col-12 col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="bi bi-search"></i> Search
-                    </button>
+                    <button type="submit" class="btn btn-primary w-100 me-4">Search</button>
+                	<a href="./" class="btn btn-secondary w-100">Reset</a>
                 </div>
             </div>
         </form:form>
 
         <hr class="my-4">
-
-        	<table class="table table-hover table-striped-columns">
-        		<tr class="text-center">
+        	<div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+        		<table class="table table-hover table-striped-columns">
+        		<thead class="table-light">
+        			<tr class="text-center">
         			<th>S.No</th>
         			<th>Name</th>
         			<th>Gender</th>
@@ -82,7 +90,9 @@
         			<th>Termination Date</th>
         			<th>Termination Reason</th>
         		</tr>
-        		<c:forEach items="${cList}" var="plan" varStatus="index">
+        		</thead>
+        		<tbody>
+        			<c:forEach items="${cList}" var="plan" varStatus="index">
         			<tr class="text-center">
         				<td>${index.count}</td>
         				<td>${plan.citizen_Name}</td>
@@ -97,8 +107,15 @@
         				<td>${plan.termination_Reason}</td>
         			</tr>
         		</c:forEach>
+        		<c:if test="${empty cList}">
+        			<tr class="text-center table-warning">
+        				<td colspan="11" class=" text-danger ">No Record Found</td>
+        			</tr>
+        		</c:if>
+        		</tbody>
         	</table>
-        
+        	</div>
+                
 
         <hr class="my-4">
 
