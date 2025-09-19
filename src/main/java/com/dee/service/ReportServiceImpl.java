@@ -3,12 +3,14 @@ package com.dee.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.dee.entity.Citizen;
 import com.dee.repository.ICitizenRepository;
 import com.dee.request.SearchRequest;
+
 @Service
 public class ReportServiceImpl implements IReportService
 {
@@ -17,12 +19,14 @@ public class ReportServiceImpl implements IReportService
 	private ICitizenRepository repo;
 
 	@Override
+	@Cacheable(value = "plan")
 	public List<String> getAllPlanNames() {
 		List<String> planName=repo.getPlansName();
 		return planName;
 	}
 
 	@Override
+	@Cacheable(value = "status")
 	public List<String> getAllPlanStatus() {
 		List<String> status=repo.getPlanStatus();
 		return status;
