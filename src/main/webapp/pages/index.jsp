@@ -122,8 +122,8 @@
         <!-- Export Links -->
         <div class="d-flex justify-content-center gap-3">
             <span class="fw-bold">Export:</span>
-            <a href="#" class="link-primary fw-semibold">Excel</a>
-            <a href="#" class="link-danger fw-semibold">PDF</a>
+            <a href="excel" class="link-primary fw-semibold">Excel</a>
+            <a href="pdf" class="link-danger fw-semibold">PDF</a>
         </div>
     </div>
 </div>
