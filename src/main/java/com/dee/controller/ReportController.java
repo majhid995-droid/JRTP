@@ -40,19 +40,22 @@ public class ReportController {
 	}
 	
 	@GetMapping("/excel")
-	public  void getExcelReport(HttpServletResponse response) throws Exception
+	public  void getExcelReport(HttpServletResponse response,Model model) throws Exception
 	{
 		response.setContentType("application/octet-stream");
 		response.addHeader("Content-Disposition", "attachment;filename=plans.xlsx");
-		service.exportExcel(response);
+		boolean	status=service.exportExcel(response);
+		
+		
 	}
 	
 	@GetMapping("/pdf")
-	public void getPdfReport(HttpServletResponse response) throws Exception
+	public void getPdfReport(HttpServletResponse response,Model model) throws Exception
 	{
 		response.setContentType("application/pdf");
 		response.addHeader("Content-Disposition","attachment;filename=plans.pdf");
 		service.exportPdf(response);
+		
 	}
 	
 }

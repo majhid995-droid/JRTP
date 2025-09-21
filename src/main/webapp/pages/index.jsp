@@ -124,6 +124,8 @@
             <span class="fw-bold">Export:</span>
             <a href="excel" class="link-primary fw-semibold">Excel</a>
             <a href="pdf" class="link-danger fw-semibold">PDF</a>
+            <br>
+            <p class="text-success">${msg}</p>
         </div>
     </div>
 </div>
